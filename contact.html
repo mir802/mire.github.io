@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Mihiretu Kebede</title>
+  <title>Certificates - Mihiretu Kebede</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* General Styles */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
+      background: #fdfbfb;
       color: #333;
-      background: linear-gradient(135deg, #fdfbfb, #f4b400);
     }
 
-      /* Header / Navigation */
+    /* Header / Navigation */
     header {
       background: #222;
       color: #fff;
@@ -31,31 +30,30 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #f4b400;
-    }
-
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    nav ul {
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f4b400;
+    }
+
+    .nav-links {
       list-style: none;
       display: flex;
       margin: 0;
       padding: 0;
     }
 
-    nav ul li {
+    .nav-links li {
       margin-left: 25px;
-      position: relative;
     }
 
-    nav ul li a {
+    .nav-links li a {
       color: #fff;
       text-decoration: none;
       font-weight: 500;
@@ -63,240 +61,220 @@
       transition: color 0.3s, border-bottom 0.3s;
     }
 
-    nav ul li a:hover {
+    .nav-links li a:hover,
+    .nav-links li a.active {
       color: #f4b400;
       border-bottom: 2px solid #f4b400;
     }
 
-    nav ul li a.active {
-      color: #f4b400;
-      border-bottom: 2px solid #f4b400;
-    }
-
-
-
-    .contact-hero {
-      
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
       color: #fff;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
       text-align: center;
-      padding: 4rem 1rem;
+    }
+
+    .container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #222;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
     }
 
-    .contact-hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      animation: fadeIn 1s ease-in-out;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
 
-    .contact-hero p {
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s;
+      display: block;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin: 1rem 0 0.5rem 0;
       font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      animation: fadeIn 1s ease-in-out 0.3s;
     }
 
-    .contact-hero::after {
-      content: '';
+    .card p {
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    /* Hover Overlay */
+    .card .overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5); /* Gradient overlay */
-      z-index: -1;
-    }
-
-    .contact {
-      text-align: center;
-      margin: 2rem 1rem;
-    }
-
-    .contact h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .contact-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .contact-list li {
-      background: #f9f9f9;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .contact-list li:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .contact-list i {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #f4b400;
-    }
-
-    .contact-list a {
-      display: block;
-      text-decoration: none;
-      font-size: 1rem;
-      color: #333;
-      font-weight: bold;
-      margin-top: 0.5rem;
-    }
-
-    .contact-list a:hover {
-      color: #f4b400;
-    }
-
-    .cta-buttons {
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 10px 20px;
-      background: #f4b400;
-      color: #000;
-      text-decoration: none;
-      font-size: 1rem;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #e0a800;
-    }
-
-    .btn-secondary {
-      background: #25A18E;
+      background: rgba(0,0,0,0.4);
       color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 15px;
     }
 
-    .btn-secondary:hover {
-      background: #1e8b77;
+    .card:hover .overlay {
+      opacity: 1;
     }
 
-    .contact-form {
-      margin-top: 3rem;
-      text-align: center;
-      animation: fadeIn 1s ease-in-out 0.6s;
-    }
-
-    .contact-form h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-form form {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
+    /* Lightbox Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
       width: 100%;
-      padding: 10px;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
 
-    .contact-form button {
-      padding: 10px 20px;
-      background: #f4b400;
-      color: #000;
-      border: none;
-      border-radius: 5px;
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: #fff;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
     }
 
-    .contact-form button:hover {
-      background: #e0a800;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #222;
+        width: 200px;
+        display: none;
+        padding: 1rem 0;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .container h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card img {
+        height: 150px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-      <header id="header">
+  <header id="header">
     <nav>
       <h1 class="logo">Mihiretu Kebede</h1>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="certificates.html" >Certificates</a></li>
-        <li><a href="projects.html" >Projects</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="certificates.html" class="active">Certificates</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="contact-hero">
-    <h2>Get in Touch</h2>
-    <p>Have a question or need help? Feel free to contact me today!</p>
-  </section>
-
-  <!-- Contact Section -->
-  <main class="contact">
-    <h2>Contact Me</h2>
-    <p>Feel free to reach out to me through any of the platforms below.</p>
-
-    <ul class="contact-list">
-      <li><i class="fas fa-phone"></i> <a href="tel:+251912345678">+251 912 345 678</a></li>
-      <li><i class="fas fa-envelope"></i> <a href="mailto:youremail@example.com">youremail@example.com</a></li>
-      <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
-      <li><i class="fab fa-facebook"></i> <a href="https://facebook.com/yourprofile" target="_blank">Facebook</a></li>
-      <li><i class="fab fa-telegram"></i> <a href="https://t.me/yourusername" target="_blank">Telegram</a></li>
-    </ul>
-
-    <div class="cta-buttons">
-      <a href="mailto:youremail@example.com" class="btn">Send an Email</a>
-      <a href="tel:+251912345678" class="btn btn-secondary">Call Me</a>
+  <main class="container">
+    <h2>My Certificates</h2>
+    <div class="grid">
+      <div class="card" data-img="images/project1.jpg">
+        <img src="images/project1.jpg" alt="Certificate 1">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate One</h3>
+        <p>Issued by Institution One.</p>
+      </div>
+      <div class="card" data-img="images/project2.jpg">
+        <img src="images/project2.jpg" alt="Certificate 2">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Two</h3>
+        <p>Issued by Institution Two.</p>
+      </div>
+      <div class="card" data-img="images/project3.jpg">
+        <img src="images/project3.jpg" alt="Certificate 3">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Three</h3>
+        <p>Issued by Institution Three.</p>
+      </div>
     </div>
-
-    <!-- Contact Form -->
-    <section class="contact-form">
-      <h3>Send Me a Message</h3>
-      <form action="submit-form.php" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
-    </section>
   </main>
- <script>
+
+  <!-- Modal Lightbox -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <img id="modal-img" src="" alt="Certificate View">
+    </div>
+  </div>
+
+  <script>
     // Lightbox functionality
     const cards = document.querySelectorAll('.card');
     const modal = document.getElementById('modal');
@@ -321,7 +299,15 @@
       }
     });
 
-    // Optional: change header style on scroll
+    // Toggle mobile menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Change header style on scroll
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
       if(window.scrollY > 50) {

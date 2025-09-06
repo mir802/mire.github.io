@@ -1,44 +1,344 @@
-<div class="grid">
-  <div class="card" data-img="images/project1.jpg">
-    <img src="images/project1.jpg" alt="Certificate 1">
-    <div class="overlay">Click to View</div>
-    <h3>Certificate One</h3>
-    <p>Issued by Institution One.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates - Mihiretu Kebede</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fdfbfb;
+      color: #333;
+    }
+
+    /* Header / Navigation */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    header.scrolled {
+      background: #111;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f4b400;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-left: 25px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 0;
+      transition: color 0.3s, border-bottom 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #f4b400;
+      border-bottom: 2px solid #f4b400;
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .container h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #222;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s;
+      display: block;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin: 1rem 0 0.5rem 0;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      color: #666;
+    }
+
+    /* Hover Overlay */
+    .card .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: 15px;
+    }
+
+    .card:hover .overlay {
+      opacity: 1;
+    }
+
+    /* Lightbox Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #222;
+        width: 200px;
+        display: none;
+        padding: 1rem 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+        text-align: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .container h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <h1 class="logo">Mihiretu Kebede</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="certificates.html" class="active">Certificates</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>My Certificates</h2>
+    <div class="grid">
+      <div class="card" data-img="images/project1.jpg">
+        <img src="images/project1.jpg" alt="Certificate 1">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate One</h3>
+        <p>Issued by Institution One.</p>
+      </div>
+
+      <div class="card" data-img="images/project2.jpg">
+        <img src="images/project2.jpg" alt="Certificate 2">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Two</h3>
+        <p>Issued by Institution Two.</p>
+      </div>
+
+      <div class="card" data-img="images/project3.GIF">
+        <img src="images/project3.GIF" alt="Certificate 3">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Three</h3>
+        <p>Issued by Institution Three.</p>
+      </div>
+
+      <div class="card" data-img="images/project4.GIF">
+        <img src="images/project4.GIF" alt="Certificate 4">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Four</h3>
+        <p>Issued by Institution Four.</p>
+      </div>
+
+      <div class="card" data-img="images/project5.GIF">
+        <img src="images/project5.GIF" alt="Certificate 5">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Five</h3>
+        <p>Issued by Institution Five.</p>
+      </div>
+
+      <div class="card" data-img="images/project6.GIF">
+        <img src="images/project6.GIF" alt="Certificate 6">
+        <div class="overlay">Click to View</div>
+        <h3>Certificate Six</h3>
+        <p>Issued by Institution Six.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal Lightbox -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modal-close">&times;</span>
+      <img id="modal-img" src="" alt="Certificate View">
+    </div>
   </div>
 
-  <div class="card" data-img="images/project2.jpg">
-    <img src="images/project2.jpg" alt="Certificate 2">
-    <div class="overlay">Click to View</div>
-    <h3>Certificate Two</h3>
-    <p>Issued by Institution Two.</p>
-  </div>
+  <script>
+    // Lightbox functionality
+    const cards = document.querySelectorAll('.card');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalClose = document.getElementById('modal-close');
 
-  <div class="card" data-img="images/project3.GIF">
-    <img src="images/project3.GIF" alt="Certificate 3">
-    <div class="overlay">Click to View</div>
-    <h3>Certificate Three</h3>
-    <p>Issued by Institution Three.</p>
-  </div>
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const imgSrc = card.getAttribute('data-img');
+        modalImg.src = imgSrc;
+        modal.style.display = 'flex';
+      });
+    });
 
-  <!-- FIX: Keep all new cards inside the same grid -->
-  <div class="card" data-img="images/project4.GIF">
-    <img src="images/project4.GIF" alt="Certificate 4">
-    <div class="overlay">Click to View</div>
-    <h3>Certificate Four</h3>
-    <p>Issued by Institution Four.</p>
-  </div>
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
 
-  <div class="card" data-img="images/project5.GIF">
-    <img src="images/project5.GIF" alt="Certificate 5">
-    <div class="overlay">Click to View</div>
-    <h3>Certificate Five</h3>
-    <p>Issued by Institution Five.</p>
-  </div>
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
 
-  <div class="card" data-img="images/project6.GIF">
-    <img src="images/project6.GIF" alt="Certificate 6">
-    <div class="overlay">Click to View</div>
-    <h3>Certificate Six</h3>
-    <p>Issued by Institution Six.</p>
-  </div>
-</div> <!-- ✅ closes grid only once -->
+    // Toggle mobile menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Change header style on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if(window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

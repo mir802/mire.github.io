@@ -4,16 +4,146 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Mihiretu Kebede</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #fdfbfb;
+    }
+
+       /* Header / Navigation */
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    header.scrolled {
+      background: #111;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f4b400;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 5px 0;
+      transition: color 0.3s, border-bottom 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #f4b400;
+      border-bottom: 2px solid #f4b400;
+    }
+
+    nav ul li a.active {
+      color: #f4b400;
+      border-bottom: 2px solid #f4b400;
+    }
+
+    .content {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #222;
+      text-align: center;
+    }
+
+    .content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      text-align: justify;
+    }
+
+    .content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul li {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    ul li i {
+      margin-right: 10px;
+      color: #f4b400;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+
+    .skill {
+      background: #f4b400;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+    }
+
+    .skills-title {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
       <h1 class="logo">Mihiretu Kebede</h1>
-      <div class="hamburger" id="hamburger">☰</div>
-      <ul class="nav-links" id="nav-links">
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="about.html">About</a></li>
+        <li><a href="about.html" class="active">About</a></li>
         <li><a href="certificates.html">Certificates</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -24,15 +154,59 @@
   <section class="content">
     <h2>About Me</h2>
     <p>I am a Lecturer at Bule Hora University and a Software Developer with expertise in Cloud Computing, Distributed Systems, and Artificial Intelligence.</p>
+
     <h3>Education</h3>
     <ul>
-      <li>MSc in Software Engineering – Addis Ababa Science and Technology University</li>
-      <li>BSc in Information Science – University of Gondar</li>
+      <li><i class="fas fa-graduation-cap"></i> MSc in Software Engineering – Addis Ababa Science and Technology University</li>
+      <li><i class="fas fa-graduation-cap"></i> BSc in Information Science – University of Gondar</li>
     </ul>
-    <h3>Skills</h3>
-    <p>PHP, Python, JavaScript, Moodle, GrapesJS, Cloud Platforms</p>
+
+    <h3 class="skills-title">Skills</h3>
+    <div class="skills">
+      <span class="skill">PHP</span>
+      <span class="skill">Python</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">Moodle</span>
+      <span class="skill">GrapesJS</span>
+      <span class="skill">Cloud Platforms</span>
+    </div>
   </section>
 
-  <script src="js/script.js"></script>
+
+  <script>
+    // Lightbox functionality
+    const cards = document.querySelectorAll('.card');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalClose = document.getElementById('modal-close');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const imgSrc = card.getAttribute('data-img');
+        modalImg.src = imgSrc;
+        modal.style.display = 'flex';
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Optional: change header style on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if(window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
